@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Decoders>
+  <Decoder id="3">
+    <name>解码器1</name>
+    <address>129.132.12.122</address>
+    <device_type>1</device_type>
+    <port>800</port>
+  </Decoder>
+  <Decoder id="4">
+    <name>解码器2</name>
+    <address>12.12.12.23</address>
+    <device_type>1</device_type>
+    <port>32</port>
+  </Decoder>
+  <Decoder id="1">
+    <name>解码器3</name>
+    <address>192.168.11.1</address>
+    <device_type>1</device_type>
+    <port>383</port>
+  </Decoder>
+</Decoders>

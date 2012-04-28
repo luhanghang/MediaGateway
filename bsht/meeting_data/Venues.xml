@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Venues>
+  <Venue id="1">
+    <name>会场1</name>
+    <Device id="1">
+      <Decoder id="4">
+        <name>解码器2</name>
+        <address>12.12.12.23</address>
+        <device_type>1</device_type>
+        <port>32</port>
+      </Decoder>
+      <Encoder id="475140">
+        <name>h264</name>
+        <address>sip:475140@192.168.0.30:3050</address>
+      </Encoder>
+    </Device>
+    <Device id="2">
+      <Decoder id="3">
+        <name>解码器1</name>
+        <address>129.132.12.122</address>
+        <device_type>1</device_type>
+        <port>800</port>
+      </Decoder>
+      <Encoder id="475141">
+        <name>192.168.0.101</name>
+        <address>192.168.0.101</address>
+      </Encoder>
+    </Device>
+    <Device id="3">
+      <Decoder id="4">
+        <name>解码器2</name>
+        <address>12.12.12.23</address>
+        <device_type>1</device_type>
+        <port>32</port>
+      </Decoder>
+      <Encoder id="475144">
+        <name>192.168.0.93</name>
+        <address>192.168.0.93</address>
+      </Encoder>
+    </Device>
+  </Venue>
+  <Venue id="2">
+    <name>会场2平</name>
+    <Device id="1">
+      </Device>
+  </Venue>
+  <Venue id="3">
+    <name>会场3</name>
+    <Device id="1">
+      <Decoder id="1">
+        <name>解码器3</name>
+        <address>192.168.11.1</address>
+        <device_type>1</device_type>
+        <port>383</port>
+      </Decoder>
+    </Device>
+  </Venue>
+  <Venue id="4">
+    <name>会场4</name>
+    <Device id="1">
+      <Decoder id="4">
+        <name>解码器2</name>
+        <address>12.12.12.23</address>
+        <device_type>1</device_type>
+        <port>32</port>
+      </Decoder>
+    </Device>
+  </Venue>
+  <Venue id="5">
+    <name>会场5</name>
+    <Device id="1"/>
+  </Venue>
+  <Venue id="6">
+    <name>会场6</name>
+    <Device id="1"/>
+  </Venue>
+  <Venue id="7">
+    <name>会场7</name>
+    <Device id="1"/>
+  </Venue>
+  <Venue id="8">
+    <name>会场8</name>
+    <Device id="1">
+      <Decoder id="1">
+        <name>解码器3</name>
+        <address>192.168.11.1</address>
+        <device_type>1</device_type>
+        <port>383</port>
+      </Decoder>
+    </Device>
+  </Venue>
+  <Venue id="9">
+    <name>会场9</name>
+    <Device id="1">
+      <Encoder id="475149">
+        <name>192.168.0.57</name>
+        <address>192.168.0.57</address>
+      </Encoder>
+      <Decoder id="4">
+        <name>解码器2</name>
+        <address>12.12.12.23</address>
+        <device_type>1</device_type>
+        <port>32</port>
+      </Decoder>
+    </Device>
+  </Venue>
+</Venues>

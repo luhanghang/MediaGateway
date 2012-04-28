@@ -1,0 +1,137 @@
+body {
+	//background-color:rgb(168,172,189);
+	//border:1px solid rgb(90,99,107);
+	margin:0;
+	background-image:url(/media/images/bg.jpg);	
+}
+
+.gray {
+	background-color:rgb(168,172,189);	
+}
+
+#main_table {
+	border:1px solid rgb(90,99,107);		
+}
+
+#col_left {
+	width:172px;
+}
+
+#col_right {
+	width: 173px;
+	text-align:center;
+}
+
+#col_main {
+	padding:0;	
+}
+
+#div_spot_list {
+
+}
+
+div.spot_button {
+	width:100%;
+	height:31px;
+	color:#ffffff;
+	text-align:center;
+	background:url(/media/images/bu.jpg);	
+	cursor:pointer;
+	margin-top:1px;
+	line-height:2.5;
+}
+
+div.spot_disabled {
+	width:100%;
+	height:31px;
+	color:#999999;
+	text-align:center;
+	background:url(/media/images/bu.jpg);	
+	margin-top:1px;
+	line-height:2.5;
+}
+
+div.switch_button {
+	width:100%;
+	height:34px;
+	color:#ffffff;
+	text-align:left;
+	padding-left: 65px;
+	padding-top: 10px;
+	cursor:pointer;
+	margin-top:2px;
+	line-height:2.5;
+	width:72px;
+}
+
+#bt1 {
+	background-image:url(/media/images/01-u.jpg)	
+}
+
+#bt1:hover {
+	background-image:url(/media/images/01-d.jpg)	
+}
+
+#bt2 {
+	background-image:url(/media/images/02-u.jpg)	
+}
+
+#bt2:hover {
+	background-image:url(/media/images/02-d.jpg)	
+}
+
+#bt3 {
+	background-image:url(/media/images/03-u.jpg)	
+}
+
+#bt3:hover {
+	background-image:url(/media/images/03-d.jpg)	
+}
+
+#bt4 {
+	background-image:url(/media/images/04-u.jpg)	
+}
+
+#bt4:hover {
+	background-image:url(/media/images/04-d.jpg)	
+}
+
+#bt5 {
+	background-image:url(/media/images/05-u.jpg)	
+}
+
+#bt5:hover {
+	background-image:url(/media/images/05-d.jpg)	
+}
+
+#bt6 {
+	background-image:url(/media/images/06-u.jpg)	
+}
+
+#bt6:hover {
+	background-image:url(/media/images/06-d.jpg)	
+}
+
+#bt7 {
+	background-image:url(/media/images/07-u.jpg)	
+}
+
+#bt7:hover {
+	background-image:url(/media/images/07-d.jpg)	
+}
+
+#bt8 {
+	background-image:url(/media/images/08-u.jpg)	
+}
+
+#bt8:hover {
+	background-image:url(/media/images/08-d.jpg)	
+}
+
+#bt9 {
+	background-image:url(/media/images/09-u.jpg)	
+}
+
+#bt9:hover {
+	background-image:url(/media/images/09-d.jpg)	
+}

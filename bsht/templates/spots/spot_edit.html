@@ -1,0 +1,97 @@
+{% if messages.success %}
+<script type="text/javascript">
+  window.location = '/spots';
+</script>
+{% endif %}
+
+<form id="edit_form" method="post" action="javascript:save_spot()">
+  <input type="hidden" name="id" value="{{ spot.id }}">
+  <fieldset>
+	<legend class="legend">监控点属性</legend>
+	<div>
+	  <div style="float:right">
+		<a href="javascript:close_spot_edit()" class="link">关闭</a>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">名称</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="name" value="{{ spot.name }}" maxlength="20">
+		</div>
+		<div class="error_tip">{{ messages.error_name }}</div>
+	  </div>
+	</div>
+
+	<div class="spot_edit">
+	  <div class="edit_label">标识</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="unique_id" value="{{ spot.unique_id }}" maxlength="10">
+		  <span class="tip">A-Z,a-z,0-9,_</span>
+		</div>
+		<div class="error_tip">{{ messages.error_unique_id }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">设备IP地址</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="address" value="{{ spot.address }}" maxlength="16">
+		</div>  
+		<div class="error_tip">{{ messages.error_address }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">服务端口</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="service_port" value="{{ spot.service_port }}" maxlength="5">
+		  <span class="tip">1-65535</span>
+		</div>  
+		<div class="error_tip">{{ messages.error_service_port }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">设备名称</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="device_name" value="{{ spot.device_name }}" maxlength="20">
+		</div>
+		<div class="error_tip">{{ messages.error_device_name }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">云台协议</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="ptz_protocal" value="{{ spot.ptz_protocal }}" maxlength="20">
+		</div>
+		<div class="error_tip">{{ messages.error_ptz_protocal }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">IO地址</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="io_addr" value="{{ spot.io_addr }}" maxlength="3">
+		  <span class="tip">0-255</span>
+		</div>  
+		<div class="error_tip">{{ messages.error_io_addr }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <div class="edit_label">音频端口</div>
+	  <div class="edit_input">
+		<div>
+		  <input class="edit_input" type="text" size="20" name="audio_port" value="{{ spot.audio_port }}" maxlength="5">
+		  <span class="tip">1-65535</span>
+		</div> 
+		<div class="error_tip">{{ messages.error_audio_port }}</div>
+	  </div>
+	</div>
+	<div class="spot_edit">
+	  <input type="submit" class="button" value="保存" id="button_save_spot">
+	</div>
+  </fieldset>
+</form>

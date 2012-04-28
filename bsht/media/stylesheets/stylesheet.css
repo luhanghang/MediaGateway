@@ -1,0 +1,277 @@
+/* CSS file */
+Canvas {
+	backgroundAlpha:0;
+}
+
+Application {
+	fontSize: 12;
+	fontWeight: normal;
+}
+
+CheckBox {
+	borderStyle: solid;
+	cornerRadius: 1;
+	borderColor:#AABED9;
+	fillAlphas: 1.0, 1.0;
+	fillColors: rgb(232,239,245), rgb(232,239,245),rgb(232,239,245),rgb(232,239,245);
+}
+
+Button {
+	color: #ffffff;
+	borderColor: #526D9C;
+	backgroundAlpha:1;
+	fontWeight:normal;
+	fillAlphas: 1.0, 1.0, 1.0, 1.0;
+	highlightAlphas: 1.0, 1.0, 1.0, 1.0;
+	textRollOverColor: #ffffff;
+	textSelectedColor: #ffffff;
+	cornerRadius: 4;
+	disabledColor: #cccccc;
+	fillColors: #B6BFCB, #203759, #B6BFCB, #576B86;
+}
+
+.button {
+	color: #000000;
+	borderColor: #457782;
+	backgroundColor: #86BAC5;
+	backgroundAlpha:0.2;
+	cornerRadius: 2;
+	paddingTop:1;
+	paddingBottom:1;
+	paddingLeft:3;
+	paddingRight:3;
+	borderStyle: solid;
+	borderThickness: 1;
+	horizontalAlign: center;
+}
+
+.menuItemButton {
+	 cornerRadius:0; 
+	 fillAlphas: 1.0, 1.0;
+	 fillColors: #5F7FA8, #405776, #4096DF, #66ABE6;
+}
+
+.menuItemButtonSelected {
+	 cornerRadius:0; 
+	 fillAlphas: 1.0, 1.0;
+	 fillColors: #4096DF, #66ABE6, #4096DF, #66ABE6;
+}
+
+Form
+{
+	backgroundColor: #F6F9BF;
+	verticalGap: 1;
+	color:#000000;
+	backgroundAlpha: 0;
+	paddingTop: 5;
+	paddingBottom: 5;
+	indicatorGap: 10;
+	paddingLeft:5;
+	paddingRight:5;
+}
+
+List {
+	backgroundAlpha:0;
+	color: #B2E1FF;
+	borderStyle:none;
+}
+
+Panel,TitleWindow {
+	color: #000000;
+	backgroundColor: rgb(232,239,245);
+	borderColor:#5F7FA8;
+	cornerRadius: 4;
+	fontSize:12;
+	titleStyleName: panelTitle;
+	controlBarStyleName: panelControlBar;
+	borderAlpha: 1.0;
+	dropShadowEnabled:false;
+	borderThicknessTop: 1;
+	roundedBottomCorners: true;
+	borderThicknessBottom: 0;
+	statusStyleName: panelStatus;
+	borderThicknessLeft: 0;
+	borderThicknessRight: 0;
+	backgroundSize: "100%";
+}
+
+TitleWindow {
+	backgroundAlpha:1;
+	controlBarStyleName: titleWindowControlBar;
+	titleStyleName: titleWindowTitle;
+	statusStyleName: titleWindowStatus;
+	color: #FFFFFF;
+	borderAlpha: 1;
+	borderColor: #5F7FA8;
+}
+
+
+Tree {
+	borderStyle:none;
+	color:#000000;
+	rollOverColor: #5F7FA8;
+	selectionColor: haloOrange;
+	textRollOverColor:#ffffff;
+	textSelectedColor: #ffffff;
+	alternatingItemColors: #457782, #000000;
+	disabledColor: #666666;
+	backgroundAlpha:0;
+	rowHeight:22;
+	verticalScrollBarStyleName: scrollBar;
+	paddingTop:-1;
+	paddingBottom:0;
+}
+
+TextInput,TextArea {
+	backgroundAlpha:1;
+	borderStyle: solid;
+	cornerRadius: 1;
+	borderColor:#AABED9;	
+	errorColor:haloOrange;
+	disabledColor: #666666;
+	disabledBorderColor: #457782;
+	backgroundColor: #E8EFF5;
+}
+
+HRule {
+	strokeColor:#457782;
+}
+
+.errorTip {
+	borderColor: haloOrange;
+	fontSize: 12;
+	borderAlpha:1;
+	fontWeight:normal;
+}
+
+.title {
+	color:#000000;
+	borderColor:rgb(170,190,217);
+	cornerRadius: 4;
+	borderStyle:solid;
+	backgroundAlpha: 0;
+}
+
+.titleWizColor {
+	backgroundAlpha: 1;
+	backgroundColor: rgb(232,239,245);	
+}
+
+DataGrid {
+	backgroundAlpha:1;
+	color:#000000;
+	rollOverColor: #5F7FA8;
+	textRollOverColor:#ffffff;
+	textSelectedColor: #ffffff;
+	selectionColor: haloOrange;
+	horizontalGridLines: false;
+	horizontalGridLineColor: #AABED9;
+	verticalGridLineColor: #AABED9;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	headerColors: #5F7FA8, #5F7FA8;
+	headerStyleName: dataGridHeader;
+	borderColor: #AABED9;
+	borderThickness: 1;
+	borderStyle: none;
+	alternatingItemColors: rgb(232,239,245), #ffffff;
+}
+
+.dataGridHeader
+{
+	backgroundAlpha:0;
+	color:#ffffff;
+}
+.panelTitle
+{
+	fontWeight: normal;
+	color:#FFFFFF;
+}
+
+.panelControlBar
+{
+	backgroundAlpha: 0;
+	color:#FFFFFF;
+	backgroundSize: auto;
+}
+
+.menu {
+	backgroundColor: #ffffff;
+	backgroundAlpha:1;
+	borderColor:rgb(170,190,217);
+	borderThickness: 1;
+	borderStyle: solid;
+	cornerRadius: 4;
+}
+
+Alert {
+	backgroundColor:rgb(232,239,245);
+	backgroundAlpha:1;
+	color:#000000;
+	borderColor:#5F7FA8;
+	borderAlpha: 1;
+	borderThicknessBottom: 1;
+	borderThicknessLeft: 1;
+	borderThicknessRight: 1;
+	borderThicknessTop: 1;
+	paddingBottom:8;
+	titleStyleName: panelTitle;
+	buttonStyleName: "button";
+	dropShadowEnabled:true;
+}
+
+RadioButton {
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #000000;
+}
+
+ToolTip {
+	fontSize:12;
+}
+
+HRule {
+	borderColor:#457782;
+}
+
+.laser {
+	backgroundColor:#5dd7fe;
+	backgroundAlpha:1;
+}
+
+ComboBox {
+	backgroundAlpha: 1;
+	borderColor:#AABED9;
+	borderStyle:solid;
+	cornerRadius: 2;
+	backgroundColor: rgb(232,239,245);
+	fontWeight:normal;
+	paddingLeft:0;
+	paddingTop:-2;
+	paddingBottom:-2;
+	dropdownStyleName: comboBoxDropdown;
+	fillAlphas: 1.0, 1.0, 1.0, 1.0;
+	fillColors: rgb(232,239,245), rgb(232,239,245),rgb(232,239,245),rgb(232,239,245);
+}
+.comboBoxDropdown {
+	backgroundAlpha: 0.8;
+	borderColor:#AABED9;
+	borderStyle:solid;
+	cornerRadius: 2;
+	backgroundColor: rgb(232,239,245);
+	color:#000000;
+}
+.panelStatus
+{
+}
+.titleWindowControlBar
+{
+	backgroundSize: "100%";
+	color: #FFFFFF;
+}
+.titleWindowTitle
+{
+}
+.titleWindowStatus
+{
+}
+

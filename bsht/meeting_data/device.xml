@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Devices>
+  <Encoders>
+    <Encoder id="1">
+      <name>test</name>
+      <address>192.168.1.1</address>
+    </Encoder>
+    <Encoder id="2">
+      <name>测试</name>
+      <address>192.168.1.2</address>
+    </Encoder>
+  </Encoders>
+  <Decoders>
+	<Decoder id="1">
+	  <name>name</name>
+	  <address>192.168.1.1</address>
+	  <device_type>1</device_type>
+	  <port>5892</port>
+	</Decoder>
+  </Decoders>
+</Devices>

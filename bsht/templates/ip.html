@@ -1,0 +1,30 @@
+<html>
+	<title>Change IP</title>
+	<head>
+	    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+		<script type="text/javascript" src="/media/javascripts/prototype.js"></script>
+		<script type="text/javascript" src="/media/javascripts/rico.js"></script>
+		<script type="text/javascript" src="/media/javascripts/utils.js"></script>
+		<script type="text/javascript" src="/media/javascripts/ip.js"></script>
+	</head>
+	<body>
+		<span id="netconf" onclick="saved()">netinfo</span>
+		<span id="rbt" onclick="rebooting()">.</span>
+		<form id="form" action="javascript:void(0);">
+		<div>
+		  Address <input type="text" id="address" name="address" size="20" value="{{netinfo.address}}">
+		</div>
+		<div>
+		  Netmask <input type="text" id="netmask" name="netmask" size="20" value="{{netinfo.netmask}}">
+		</div>
+		<div>
+		  Gateway <input type="text" id="gateway" name="gateway" size="20" value="{{netinfo.gateway}}">
+		</div>
+		<div style="margin-top:10px;">
+			<input type="submit" value="Change">
+			<input type="button" value="Sign Out" id="sign_out">
+			<input type="button" value="Reboot" id="reboot">
+		</div>
+		</form>
+	</body>
+</html>

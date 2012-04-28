@@ -1,0 +1,55 @@
+body {
+	font-size: 12px;
+	font-family: "微软雅黑", "tahoma";
+	background-color: #ffffff;
+}
+
+input.button {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #666666;
+}
+
+#mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	filter: alpha( opacity = 80 );
+	opacity: 0.8;
+	z-index: 1000;
+	background-color: #ffffff;
+}
+
+a:link.button_link, a:visited.button_link, a:active.button_link {
+	color: #000000;
+	text-decoration: none;
+	background-color: transparent;
+	font-size: 12px;
+}
+
+a:hover.button_link {
+	color: #ff0000;
+	text-decoration: none;
+	background-color: transparent;
+	font-size: 12px;
+}
+
+a:link.link, a:visited.link, a:active.link {
+	color: #666666;
+	text-decoration: none;
+	background-color: transparent;
+	font-size: 12px;
+}
+
+a:hover.link {
+	color: rgb(255,0,132);
+	text-decoration: none;
+	background-color: transparent;
+	font-size: 12px;
+}
+
+legend, .legend, legend.legend {
+	color: rgb(255,0,132);
+}

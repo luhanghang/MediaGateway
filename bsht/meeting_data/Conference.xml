@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Conference>
+  <name>会议11</name>
+  <description>会议描述11&lt;&gt;adsf?@#!#!$%@^%&amp;*&#13;efafdsf&#13;#Q$#$%$#%#%$#%&lt;$#&gt;$#%{}$#%</description>
+  <state>0</state>
+  <Users>
+    <User manager="true">
+      <account>mangager</account>
+      <passwd>1</passwd>
+    </User>
+    <User manager="false">
+      <account>user</account>
+      <passwd>1</passwd>
+    </User>
+  </Users>
+  <Venues>
+    <Venue id="1"/>
+    <Venue id="5"/>
+    <Venue id="4"/>
+    <Venue id="8"/>
+    <Venue id="6"/>
+    <Venue id="9"/>
+  </Venues>
+</Conference>

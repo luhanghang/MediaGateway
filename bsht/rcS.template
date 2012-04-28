@@ -1,0 +1,22 @@
+#!/bin/sh
+/bin/mount -a
+# below getting rid of ram being mounted ro
+#/bin/mount -o remount / 
+#
+# The following is for dhcp
+#
+#
+# Instead, if you want static IP address
+#
+ifconfig eth0 inet IP_ADDR0 netmask MASK_ADDR0
+ifconfig eth0 inet IP_ADDR1 netmask MASK_ADDR1
+#ifconfig eth1 inet 192.168.1.30 netmask 255.255.255.0
+#ifconfig bond0 inet 192.168.0.30 netmask 255.255.255.0 
+#ifenslave bond0 eth0
+#ifenslave bond0 eth1
+#route add default gw GW_ADDR 
+#
+# Run ssh daemon
+/sbin/sshd
+/usr/local/httpd/sbin/lighttpd -f /etc/lighttpd.conf
+/srv/www/bsht/runfastcgi

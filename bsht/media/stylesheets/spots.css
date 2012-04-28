@@ -1,0 +1,83 @@
+#div_main {
+	margin-top:50px;
+	margin-bottom: 50px;
+	width:800px;
+	border: 0px solid rgb(94,142,255);
+	text-align: left;
+}
+
+#div_spot_list_title {
+	border-bottom: 1px solid rgb(94, 142, 255);
+	height: 20px;
+}
+
+#div_list_footer {
+	color: rgb(0,99,220);
+}
+
+
+#div_spot_list {
+	clear:both;
+	overflow-y:auto;
+}
+
+div.spot {
+	clear:both;
+	border-bottom: 1px solid #cccccc;
+	height:20px;
+	color: #666666;
+}
+
+div.title, div.edit_label {
+	color: blue;
+}
+
+div.sffocus, div.sselect, div.title, div.edit_label, span.tip {
+	color: rgb(0,99,220);
+}
+
+#spot_count, div.error_tip {
+	color: rgb(255, 0, 132);
+}
+
+div.spot_property, div.title {
+	float:left;
+	text-align: left;
+}
+
+#spot_edit {
+	position: absolute;
+	top: 100px;
+	border: 0px solid black;
+	width: 380px;
+	background-color: #ffffff;
+	padding: 3px;
+	z-index: 1001;
+}
+
+div.spot_edit {
+	clear:both;
+	margin-left: 10px;
+}
+
+div.error_tip {
+}
+
+div.edit_input, div.edit_label {
+	float: left;
+}
+
+div.edit_label {
+  width: 80px;
+  margin-lef: 10px;
+}
+
+#button_bar {
+  text-align: left;
+  margin: 10px;
+}
+
+#div_list_footer {
+	text-align: left;
+	padding: 5px;
+}

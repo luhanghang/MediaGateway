@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Dictionary>
+  <Devices description="设备库">
+    <Device id="1">
+      <name>VideoJet100</name>
+      <vendor>北京朗信通科技有限公司</vendor>
+      <type>MPEG-4视频编码器</type>
+      <driver>VideoJet100Drv</driver>
+      <GUID>{1531551A-2E1A-4928-91DD-902CA31BCB3C}</GUID>
+    </Device>
+    <Device id="2">
+      <name>H264Encoder</name>
+      <vendor>北京朗信通科技有限公司</vendor>
+      <type>h264视频编码器</type>
+      <driver>H264Driver</driver>
+      <GUID>{42073209-1FCA-439C-9CDF-080D6E16853F}</GUID>
+    </Device>
+    <Device id="3">
+      <name>Bosch Mpeg4 Encoder</name>
+      <vendor>Bosch</vendor>
+      <type>MPEG-4视频编码器</type>
+      <driver>RCPPlusDriver</driver>
+      <GUID>{A52382A5-1B40-4604-AA8C-CA5AEAB3271D}</GUID>
+    </Device>
+    <Device id="4">
+      <name>BQ6500VideoServer</name>
+      <vendor>longcent</vendor>
+      <type>VideoServer</type>
+      <driver>6500Drv</driver>
+      <GUID>{8F5BCC9C-CC48-416A-AC3F-C932579918B8}</GUID>
+    </Device>
+    <Device id="5">
+      <name>udp-mobile</name>
+      <vendor>Longcent</vendor>
+      <type>3G mobile</type>
+      <driver>udpdriver</driver>
+      <GUID>{8F5BCC9C-CC48-416A-AC3F-C932579918B8}</GUID>
+    </Device>
+    <Device id="6">
+      <name>A3100</name>
+      <vendor>Longcent</vendor>
+      <type>mobile</type>
+      <driver>a3100driver</driver>
+      <GUID>{8F5BCC9C-CC48-416A-AC3F-C932579918B8}</GUID>
+    </Device>
+    <Device id="7">
+      <name>fwrouter</name>
+      <vendor>longcent</vendor>
+      <type>fw</type>
+      <driver>fwroutedrv</driver>
+      <GUID>12345</GUID>
+    </Device>
+    <Device id="8">
+      <name>gwdriver</name>
+      <vendor>longcent</vendor>
+      <type>gwdriver</type>
+      <driver>gwdriver</driver>
+      <GUID>123456</GUID>
+    </Device>
+  </Devices>
+  <EncodeTypes description="编码类型">
+    <Item id="0" name="mpeg2"/>
+    <Item id="1" name="mpeg4"/>
+    <Item id="2" name="h264"/>
+    <Item id="3" name="x-mpeg4"/>
+    <Item id="4" name="x-h264"/>
+    <Item id="5" name="bosch-mpeg4"/>
+    <Item id="6" name="h264_udp"/>
+  </EncodeTypes>
+  <Communications description="通讯模式">
+    <Item id="0" name="udp-单播"/>
+    <Item id="1" name="udp-组播"/>
+    <Item id="2" name="tcp-client"/>
+    <Item id="3" name="tcp-server"/>
+  </Communications>
+  <ProtocalTypes description="协议类型">
+    <Item id="0" name="协议类型1"/>
+    <Item id="1" name="协议类型2"/>
+    <Item id="2" name="协议类型3"/>
+  </ProtocalTypes>
+  <PTZProtocals description="云台协议">
+    <Item id="0" name="pelco_p"/>
+    <Item id="1" name="云台协议2"/>
+    <Item id="2" name="云台协议3"/>
+  </PTZProtocals>
+  <Resolutions description="分辨率">
+    <Item id="0" name="CIF"/>
+    <Item id="1" name="D1"/>
+    <Item id="2" name="2CIF"/>
+  </Resolutions>
+  <ConnectType description="连接模式">
+    <Item id="0" name="主动"/>
+    <Item id="1" name="被动"/>
+  </ConnectType>
+</Dictionary>

@@ -1,0 +1,27 @@
+<html>
+  <title>Properties Editor</title>
+
+  
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<script type="text/javascript" src="/media/javascripts/prototype.js"></script>
+	<script type="text/javascript" src="/media/javascripts/rico.js"></script>
+	<script type="text/javascript" src="/media/javascripts/utils.js"></script>
+	<script type="text/javascript" src="/media/javascripts/index.js"></script>
+  </head>
+
+
+
+  <body>
+	<span id="signin" onclick="signIn()" style="display:inline">-</span>
+	<form id="form" action="javascript:void(0)">
+	  <div>
+		Password <input type="password" size="20" name="passwd" id="passwd">
+	  </div>
+	  <div>
+		<input type="submit" value="Sign In">
+	  </div>
+	</form>
+  </body>
+</html>
