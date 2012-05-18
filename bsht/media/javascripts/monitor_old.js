@@ -1,24 +1,24 @@
 var mapview = false;
 var map,container;
 
-var points = [];
-var gis_array;
-
 (function(){
 function load_script(xyUrl, callback){
     var head = document.getElementsByTagName('head')[0];
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = xyUrl;
+    //借鉴了jQuery的script跨域方法
     script.onload = script.onreadystatechange = function(){
         if((!this.readyState || this.readyState === "loaded" || this.readyState === "complete")){
             callback && callback();
+            // Handle memory leak in IE
             script.onload = script.onreadystatechange = null;
             if ( head && script.parentNode ) {
                 head.removeChild( script );
             }
         }
     };
+    // Use insertBefore instead of appendChild  to circumvent an IE6 bug.
     head.insertBefore( script, head.firstChild );
 }
 function transMore(points,type,callback){
@@ -28,6 +28,7 @@ function transMore(points,type,callback){
 	var maxCnt = 20;//每次发送的最大个数
 	var send = function(){
 		var url = xyUrl + "&x=" + xs.join(",") + "&y=" + ys.join(",") + "&callback=callback";
+	    //动态创建script标签
 	    load_script(url);
 		xs = [];
 		ys = [];
@@ -55,13 +56,6 @@ function init() {
 	adjust_size();
 	window.onresize = adjust_size;
 	setInterval('refresh_list()',3000);
-	map = new BMap.Map("container");
-	var point = new BMap.Point(116.404, 39.915);  
- 	map.centerAndZoom(point, 15);
-	var opts = {anchor: BMAP_ANCHOR_TOP_RIGHT};
-	map.addControl(new BMap.NavigationControl(opts)); 
-	get_gis_inf();
-	setInterval('get_gis_inf()',10000);
 }
 
 function refresh_list() {
@@ -70,63 +64,6 @@ function refresh_list() {
 		correctPNG();
 	});
 }
-
-function get_gis_inf() {
-	$.post('/monitor1/spots',{}, function(result) {
-		points = [];
-		map.clearOverlays();
-		gis_array = eval("(" + result + ")");
-		for(var i in gis_array) {
-			var gis = gis_array[i].gis.split(":")[1].split(",");
-			points.push(new BMap.Point(gis[1],gis[0]));
-		}
-		if(gis_array.length > 0) {
-			magic();
-		}
-	});
-}
-
-function callback(xyResults){
-	var xyResult = null;
-	for(var index in xyResults){
-		var spot = gis_array[index];
-		xyResult = xyResults[index];
-		if(xyResult.error != 0){continue;}
-		var point = new BMap.Point(xyResult.x, xyResult.y);
-		var marker = new BMap.Marker(point);
-		map.addOverlay(marker);
-		marker.addEventListener("click", function(){  
- 			play_video(spot.name,spot.global_id);  
-		});
-		label = new BMap.Label(spot.name);
-		label.setPosition(point);
-		label.setStyle({ backgroundColor:"#005493",color:"#fff",border:"0",padding:"5px" })
-		map.addOverlay(label);
-		label.addEventListener("click", function(){  
- 			play_video(spot.name,spot.global_id);  
-		});
-		map.centerAndZoom(point, 15);
-	}
-}
-
-function magic(){
-	BMap.Convertor.transMore(points,0,callback);
-}
-
-function toggle_mapview() {
-	if(mapview = !mapview) {
-		player.style.width = "400px";
-		player.style.height = "345px";
-		player.style.left = "5px";
-		player.style.top = "5px";
-	} else {
-		player.style.width = "100%";
-		player.style.left = "0";
-		player.style.top = "0";
-		adjust_size();
-	}
-}
-
 
 function adjust_size() {
 	document.getElementById("col_main").style.width = (document.documentElement.clientWidth - 172 - 173) + 'px';

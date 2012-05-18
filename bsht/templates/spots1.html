@@ -1,0 +1,25 @@
+				{% for spot in spot_list|dictsortreversed:"online" %}
+			  	{% ifequal spot.online "1" %}
+				<div class="spot_button" onclick="play_video('{{ spot.name }}','sip:{{spot.id}}@{{host}}:{{gateway.port}}')" onmouseover="button_spot_over(this)" onmouseout="button_spot_out(this)" onmousedown="this.style.color='red'" onmouseup="this.style.color='white'">
+				<div style="float:left;width:30px;position:relative"><img width="16" height="16" id="online_{{spot.id}}" src="/media/images/s{{spot.online}}.png" style="vertical-align:-2px"/></div>   
+				<div style="float:left">{{ spot.name }}</div>
+				</div>
+				{% else %}
+				<div class="spot_disabled">
+				<div style="float:left;width:30px;position:relative"><img width="16" height="16" id="online_{{spot.id}}" src="/media/images/s{{spot.online}}.png" style="vertical-align:-2px"/></div>   
+				<div style="float:left">{{ spot.name }}</div>
+				</div>
+				{% endifequal %}
+				{% ifnotequal spot.gis 0 %}
+					<script type="text/javascript">
+						var gis = '{{ spot.gis }}';
+						gis = gis.split(':')[1].split(',');
+						var lan = gis[0];
+						var lng = gis[1];
+						points.push(new BMap.Point(lng,lan));
+					</script>
+				{% endifnotequal %}
+				{% endfor %}
+				<script type="text/javascript">
+					alert(points);
+				</script>

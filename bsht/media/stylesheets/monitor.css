@@ -14,16 +14,16 @@ body {
 }
 
 #col_left {
-	width:172px;
+	width:180px;
 }
 
 #col_right {
-	width: 173px;
 	text-align:center;
 }
 
 #col_main {
 	padding:0;	
+	position: relative;
 }
 
 #div_spot_list {
@@ -37,7 +37,7 @@ div.spot_button {
 	text-align:center;
 	background:url(/media/images/bu.jpg);	
 	cursor:pointer;
-	margin-top:1px;
+	margin-bottom:1px;
 	line-height:2.5;
 }
 
@@ -47,7 +47,7 @@ div.spot_disabled {
 	color:#999999;
 	text-align:center;
 	background:url(/media/images/bu.jpg);	
-	margin-top:1px;
+	margin-bottom:1px;
 	line-height:2.5;
 }
 
@@ -59,7 +59,7 @@ div.switch_button {
 	padding-left: 65px;
 	padding-top: 10px;
 	cursor:pointer;
-	margin-top:2px;
+	margin-bottom:2px;
 	line-height:2.5;
 	width:72px;
 }
@@ -134,4 +134,12 @@ div.switch_button {
 
 #bt9:hover {
 	background-image:url(/media/images/09-d.jpg)	
+}
+
+#bt10:hover {
+	background-image:url(/media/images/10-d.jpg)	
+}
+
+#bt10 {
+	background-image:url(/media/images/10-u.jpg)	
 }
