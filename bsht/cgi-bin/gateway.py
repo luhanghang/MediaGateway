@@ -65,7 +65,14 @@ def inf(ip=''):
 	for key in info.keys():
 		node = etree.SubElement(root, key)
 		node.text = info[key]
-
+	node = etree.SubElement(root,'capacity')
+	if os.path.isfile('/etc/capacity'):
+		file = open('/etc/capacity', 'r')
+		line = file.readline()
+		file.close()	
+		node.text = line.strip()
+	else:
+		node.text = "512"
 	return etree.tostring(root, encoding='UTF-8', xml_declaration=True, pretty_print=True)
 
 def get_config(request):

@@ -3,7 +3,9 @@
 	<split string=" "/>
 	<brand string="3G Live"/>
 	<sysname string="Multimedia Gateway"/>
+	<capacity string="Capacity"/>
 	<welcome string="Welcome to use"/>
+	<reach_max_capacity string="Reach max capacity"/>
 	<company string="Dayang Technology Development Inc."/>
 	<entry string="Enter"/>
 	<backup string="Backup"/>

@@ -2,7 +2,9 @@
 <language>
 	<split string=" "/>
 	<brand string="Rainbow"/>
+	<capacity string="Capacity"/>
 	<sysname string="Multimedia Gateway"/>
+	<reach_max_capacity string="Reach max capacity"/>
 	<welcome string="Welcome to use"/>
 	<company string="Dayang Technology Development Inc."/>
 	<entry string="Enter"/>

@@ -2,7 +2,9 @@
 <language>
 	<split string=""/>
 	<brand string="3G Live"/>
+	<capacity string="监控点容量"/>
 	<sysname string="多媒体网关"/>
+	<reach_max_capacity string="已达到最大监控点容量"/>
 	<welcome string="欢迎使用"/>
 	<company string="北京中科大洋科技发展股份有限公司"/>
 	<backup string="备份"/>

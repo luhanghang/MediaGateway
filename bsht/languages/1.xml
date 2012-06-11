@@ -4,6 +4,7 @@
 	<brand string=""/>
 	<sysname string="Multimedia Gateway"/>
 	<welcome string="Welcome to use"/>
+	<reach_max_capacity string="Reach max capacity"/>
 	<company string=""/>
 	<entry string="Enter"/>
 	<backup string="Backup"/>
@@ -152,4 +153,5 @@
 	<backup_spots string="B"/>
 	<restore_spots string="R"/>
 	<mapview string="Map View"/>
+	<capacity string="Capacity"/>
 </language>

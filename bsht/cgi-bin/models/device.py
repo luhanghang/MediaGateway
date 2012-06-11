@@ -141,8 +141,14 @@ class Encoder(object):
 	
 
 	def list(self):
+		capacity = "512";
+		if os.path.isfile('/etc/capacity'):
+			file = open('/etc/capacity', 'r')
+			line = file.readline()
+			file.close()	
+			capacity = line.strip()
 		spots = self.gw_node.xpath("MODULE[@id='1']")[0]
-		encoders = etree.Element("Encoders", name=u'编码器')
+		encoders = etree.Element("Encoders", name=u'编码器', capacity=capacity)
 		for encoder in self.info.xpath("OBJECT[@id!='0']"):
 			encoder_id = encoder.get('id')
 			en = self.to_xml(encoder)

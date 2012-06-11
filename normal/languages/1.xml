@@ -4,6 +4,8 @@
 	<brand string=""/>
 	<sysname string="Multimedia Gateway"/>
 	<welcome string="Welcome to use"/>
+	<capacity string="Capacity"/>
+	<reach_max_capacity string="Reach max capacity"/>
 	<company string=""/>
 	<entry string="Enter"/>
 	<backup string="Backup"/>
