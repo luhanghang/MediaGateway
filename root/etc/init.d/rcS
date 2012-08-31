@@ -1,0 +1,40 @@
+#!/bin/sh
+/bin/mount -a
+# below getting rid of ram being mounted ro
+#/bin/mount -o remount / 
+#
+# The following is for dhcp
+#
+#
+# Instead, if you want static IP address
+#
+ifconfig lo up 127.0.0.1
+ip0=`sed -n '1,1p' /etc/netconf`
+mask0=`sed -n '2,1p' /etc/netconf`
+ip1=`sed -n '3,1p' /etc/netconf`
+mask1=`sed -n '4,1p' /etc/netconf`
+vip=`sed -n '3,1p' /etc/netconf|cut -d '.' -f 4`
+#gw=`sed -n '5,1p' /etc/netconf`
+`ifconfig eth0 inet 172.172.172.$vip netmask 255.255.255.0`
+`ifconfig eth1 inet $ip1 netmask $mask1 up`
+#ifconfig bond0 inet 192.168.0.30 netmask 255.255.255.0 
+#ifenslave bond0 eth0
+#ifenslave bond0 eth1
+`route add default gw 172.172.172.254`
+`ip route add $ip0/32 dev eth0`
+/etc/addroutes
+#/etc/init.d/open-iscsi start
+#mount /dev/sda1 /mnt/iscsi
+#
+# Run ssh daemon
+crond
+rm /var/log/lighttpd/*
+/sbin/sshd
+udpsvd -vE 0.0.0.0 69 tftpd /tftpd &
+/srv/www/bsht/runfastcgi
+#/usr/local/mysql/bin/mysqld_safe &
+/usr/local/httpd/sbin/lighttpd -f /etc/lighttpd.conf
+#/home/firebolt/work/smartvision/test/server -h 192.168.1.30 -a 192.168.0.80 -b
+udevd --daemon
+echo_ip &
+checkmate &

@@ -11,6 +11,7 @@ import netconf
 from utils import *
 from httpClient import *
 import time
+import string
 
 def index(request):
   #if is_signed_in(request):
@@ -124,3 +125,21 @@ def get_language(request):
 	data = file.read()
 	file.close()
 	return HttpResponse(data,mimetype='text/xml') 	
+	
+def change_capacity(request):
+	current = 512
+	if os.path.isfile('/etc/capacity'):
+		file = open('/etc/capacity', 'r')
+		line = file.readline()
+		file.close()	
+		current = line.strip()	
+	return render_to_response('change_capacity.html', {'current':current})
+
+def save_capacity(request):
+	if request.POST.has_key('capacity'):
+		capacity = request.POST['capacity'].strip()
+		if capacity.isdigit():
+			file = open('/etc/capacity', 'w')
+			file.write(str(string.atoi(capacity)))
+			file.close()
+	return HttpResponseRedirect('/change_capacity')

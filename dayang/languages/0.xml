@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <language>
 	<split string=""/>
-	<brand string="3G Live"/>
+	<brand string=""/>
 	<capacity string="监控点容量"/>
-	<sysname string="多媒体网关"/>
 	<reach_max_capacity string="已达到最大监控点容量"/>
+	<sysname string="多媒体网关"/>
 	<welcome string="欢迎使用"/>
 	<company string="北京中科大洋科技发展股份有限公司"/>
 	<backup string="备份"/>
@@ -148,4 +148,10 @@
 	<maxlength string="单个文件最大长度"/>
 	<minutes string="分钟"/>
 	<eth1_ip_please string="请填写备份网关内网网卡(eth1)IP地址"/>
+	<replay string="回放"/>
+	<switch_server string="切换主备"/>
+	<confirm_switch_server string="确定要切换主备服务器?"/>
+	<backup_spots string="备份"/>
+	<restore_spots string="恢复"/>
+	<mapview string="地图模式"/>
 </language>

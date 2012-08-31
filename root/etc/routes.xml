@@ -1,0 +1,8 @@
+<routes>
+  <route>
+    <net>192.168.2.0</net>
+    <mask>255.255.255.0</mask>
+    <gateway>192.168.1.1</gateway>
+    <device>eth1</device>
+  </route>
+</routes>

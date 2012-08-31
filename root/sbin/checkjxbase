@@ -1,0 +1,16 @@
+#!/bin/sh
+while true; do
+	p=`ps|grep testjxbase -c`
+	if [ $p == 0 ]; then
+		echo > /tmp/gateway.state
+		if [ -f "/var/log/crash" ]; then
+			echo `date` >> /var/log/crash
+		else
+		       	echo `date` > /var/log/crash
+		fi
+		                                                                                
+		/home/firebolt/work/smartvision/test/testjxbase	&
+		sleep 5
+	fi
+	sleep 1
+done

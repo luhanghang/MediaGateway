@@ -153,4 +153,5 @@
 	<confirm_switch_server string="确定要切换主备服务器?"/>
 	<backup_spots string="备份"/>
 	<restore_spots string="恢复"/>
+	<mapview string="地图模式"/>
 </language>

@@ -1,0 +1,20 @@
+#!/bin/sh
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+
+case `tty` in
+	/dev/console)
+		#trap ":" INT QUIT TSTP
+		ip0=`head -n 1 /etc/netconf`
+		ip1=`sed -n '3,1p' /etc/netconf`
+		eval $(echo "export ADDR0=$ip0")
+		eval $(echo "export ADDR1=$ip1")
+		/sbin/sshd
+		/home/firebolt/work/smartvision/test/ledmessage &
+		/sbin/checkjxbase &
+		#/sbin/check_crash 
+		#/boot/launch_conf.sh
+		;;
+	*)
+		;;
+esac

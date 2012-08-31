@@ -1,0 +1,47 @@
+#!/bin/sh
+backup_ip=`cat /etc/backup.conf`
+netconf='/etc/netconf'
+my_ip=`head -n 1 $netconf`
+mask=`sed -n '2,1p' $netconf`
+#ip1=`sed -n '3,1p' $netconf`
+#mask1=`sed -n '4,1p' $netconf`
+gw=`sed -n '5,1p' $netconf`
+host=0
+echo 0 > /tmp/host
+
+if [ -z $backup_ip ]; then
+	`ifconfig eth0 $my_ip netmask $mask`
+	route delete default 
+	`route add default gw $gw`
+	/etc/addroutes
+	a=`nmap -n -sP $gw`
+else
+	vip=`cat /etc/backup.conf|cut -d '.' -f 4`
+	while true; do
+		eth0running=`ifconfig eth0|grep RUNNING -c`
+		jxrun=`ps|grep /home/firebolt/work/smartvision/test/testjxbase -c`
+		if [ $jxrun == 0 ] || [ $eth0running == 0 ]; then
+			`ifconfig eth0:0 down`
+			route delete default
+			route add default gw 172.172.172.254
+			host=0
+			/etc/addroutes
+		else
+			if [ $host == 0 ]; then
+				a=`nmap -n 172.172.172.$vip -p 3050|grep "open" -c`
+				if [ $a == 0 ]; then
+					`ifconfig eth0:0 $my_ip netmask $mask`
+					route delete default 
+					`route add default gw $gw`
+					host=1
+					a=`nmap -n -sP $gw`
+					/etc/addroutes
+				#else
+					#/sbin/sync_settings
+				fi
+			fi
+		fi
+		echo $host /tmp/host
+		sleep 0.1 
+	done
+fi

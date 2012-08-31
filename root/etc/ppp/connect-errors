@@ -1,0 +1,11 @@
+sh: /usr/sbin/chat: not found
+abort on (BUSY)
+abort on (ERROR)
+abort on (NO DIALTONE)
+
+Sending break to the modem
+send (\K^M)
+send (+++ATH^M)
+
+Goodbay
+

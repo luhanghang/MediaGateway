@@ -147,5 +147,6 @@
 	<root_path string="Root Path For Record Files"/>
 	<maxlength string="Single File Max Length"/>
 	<minutes string="Minutes"/>
+	<mapview string="MapView"/>
 	<eth1_ip_please string="Need eth1 IP address of The Backup Server"/>
 </language>

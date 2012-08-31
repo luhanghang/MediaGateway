@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+	{% block title %}修改监控点容量{% endblock %}
+	
+	{% block content %} 
+	<form method="post" action="/save_capacity">
+		监控点容量:<input type="text" value="{{current}}" name="capacity"/>
+		<input type="submit" value="保存"/>
+	</form>
+{% endblock %}

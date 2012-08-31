@@ -1,0 +1,16 @@
+#!/bin/sh
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+
+case `tty` in
+	/dev/console)
+		#trap ":" INT QUIT TSTP
+		export ADDR0=IP_ADDR0
+		export ADDR1=IP_ADDR1
+		/home/firebolt/work/smartvision/test/ledmessage &
+		/home/firebolt/work/smartvision/test/testjxbase &
+		#/boot/launch_conf.sh
+		;;
+	*)
+		;;
+esac

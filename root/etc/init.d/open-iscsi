@@ -1,0 +1,180 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          iscsi
+# Required-Start:    $local_fs
+# Required-Stop:     $remote_fs sendsigs networking
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Starts and stops the iSCSI initiator services and logs in to default targets
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/sbin/iscsid
+ADM=/sbin/iscsiadm
+PIDFILE=/var/run/iscsid.pid
+NAMEFILE=/etc/iscsi/initiatorname.iscsi
+
+[ -x "$DAEMON" ] || exit 0
+
+# Support for ifupdown script.
+# Don't bother to restart when lo is configured.
+if [ "$IFACE" = lo ]; then
+	exit 0
+fi
+
+. /lib/lsb/init-functions
+
+if [ ! -d /sys/class/ ]; then
+  log_failure_msg "iSCSI requires a mounted sysfs, not started."
+  exit 0
+fi
+
+nodestartup_re='s/^node\.conn\[0]\.startup[ 	]*=[ 	]*//p'
+
+RETVAL=0
+
+sanitychecks() {
+        # Do sanity checks before we start..
+        if [ ! -e $CONFIGFILE ]; then
+                log_failure_msg "Error: configuration file $CONFIGFILE is missing!"
+                log_failure_msg "The iSCSI driver has not been correctly installed and cannot start."
+                exit 1
+        fi
+
+        if [ ! -f $NAMEFILE ] ; then
+            log_failure_msg "Error: InitiatorName file $NAMEFILE is missing!"
+            log_failure_msg "The iSCSI driver has not been correctly installed and cannot start."
+            exit 1
+        fi
+
+        # make sure there is a valid InitiatorName for the driver
+        if ! grep -q "^InitiatorName=[^ \t\n]" $NAMEFILE ; then
+            log_failure_msg "Error: $NAMEFILE does not contain a valid InitiatorName."
+            log_failure_msg "The iSCSI driver has not been correctly installed and cannot start."
+            exit 1
+        fi
+}
+
+startdaemon() {
+	if pidofproc -p $PIDFILE $DAEMON > /dev/null; then
+		# The iscsi daemon is already running
+		RETVAL=0
+	else
+		log_daemon_msg "Starting iSCSI initiator service" "iscsid"
+		sanitychecks
+		modprobe -q iscsi_tcp 2>/dev/null || :
+		modprobe -q ib_iser 2>/dev/null || :
+		start-stop-daemon --start --quiet --exec $DAEMON
+		RETVAL=$?
+		log_end_msg $RETVAL
+		# Don't kill the iscsi daemon when killing all processes 
+       		# during system shutdown
+		ln -sf $PIDFILE /lib/init/rw/sendsigs.omit.d/ || true
+	fi
+}
+
+starttargets() {
+	log_daemon_msg "Setting up iSCSI targets"
+	# Only start automatic targets if there isn't the expected 
+	# number of running sessions
+	ISCSI_TARGET_NB=$(cat /etc/iscsi/nodes/*/*/default 2>/dev/null| grep -c automatic)
+	ISCSI_SESSION_NB=$($ADM -m session 2>/dev/null | grep -c ^)
+	if [ "${ISCSI_TARGET_NB}" -ne "${ISCSI_SESSION_NB}" ]; then
+		$ADM -m node --loginall=automatic > /dev/null
+		udevadm settle
+	fi
+	log_end_msg 0
+}
+
+# Wait for iscsi devices to be started
+waitfordevices() {
+	log_daemon_msg "Waiting for iscsi devices"
+	sanitychecks
+	ISCSI_TARGET_NB=$(cat /etc/iscsi/nodes/*/*/default 2>/dev/null| grep -c automatic)
+        ISCSI_SESSION_NB=0
+ 	I=0
+	while [ "${ISCSI_TARGET_NB}" -ne "${ISCSI_SESSION_NB}" ] && [ "$I" -ne 20 ]
+	do
+		sleep 1
+		ISCSI_SESSION_NB=$($ADM -m session 2>/dev/null | grep -c ^)
+		I=$((I+1))
+	done
+	if [ "${I}" -eq 20 ]; then
+		RETVAL=1
+		log_end_msg 1
+	else
+		log_end_msg 0
+	fi
+}
+
+start() {
+	startdaemon
+	if [ "$runlevel" = S ]; then
+		# during boot process (rcS) wait for devices to be brought up 
+		# by ifupdown scripts.
+		waitfordevices
+	else
+		starttargets
+	fi
+}
+
+stoptargets() {
+	log_daemon_msg "Disconnecting iSCSI targets"
+	sync
+	# only logout if daemon is running, iscsiadm hangs otherwise
+	if pidofproc -p $PIDFILE $DAEMON > /dev/null; then
+		$ADM -m node --logoutall=all > /dev/null
+        fi
+	log_end_msg 0
+}
+
+stop() {
+	stoptargets
+	log_daemon_msg "Stopping iSCSI initiator service"
+	start-stop-daemon --stop --quiet --signal KILL --exec $DAEMON
+	rm -f $PIDFILE /lib/init/rw/sendsigs.omit.d/`basename $PIDFILE`
+	modprobe -r ib_iser 2>/dev/null
+	modprobe -r iscsi_tcp 2>/dev/null
+	log_end_msg 0
+}
+
+restart() {
+	stop
+	start
+}
+
+restarttargets() {
+	stoptargets
+	starttargets
+}
+
+status() {
+	if status_of_proc $DAEMON `basename $DAEMON`; then
+		# list active sessions
+		log_daemon_msg Current active iSCSI sessions:
+		$ADM -m session
+		exit 0
+	else
+		exit $?
+	fi
+}
+
+# Support for ifupdown script
+if [ -z "${MODE}" ]
+then
+	MODE=$1
+fi
+
+case "$MODE" in
+	start|starttargets|stop|stoptargets|restart|restarttargets|status)
+		$MODE
+		;;
+	force-reload)
+		restart
+		;;
+	*)
+		log_success_msg "Usage: $0 {start|stop|restart|force-reload|status|starttargets|stoptargets|restarttargets}"
+		exit 1
+		;;
+esac
+exit $RETVAL

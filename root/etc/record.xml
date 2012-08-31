@@ -1,0 +1,5 @@
+<Record>
+  <server>192.168.1.201:8888</server>
+  <root>/mnt/records</root>
+  <maxlength>30</maxlength>
+</Record>

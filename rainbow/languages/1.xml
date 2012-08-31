@@ -153,4 +153,5 @@
 	<confirm_switch_server string="Sure to switch server?"/>
 	<backup_spots string="B"/>
 	<restore_spots string="R"/>
+	<mapview string="Map View"/>
 </language>
