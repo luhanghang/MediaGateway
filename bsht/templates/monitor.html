@@ -44,13 +44,13 @@
 		  	<div style="width:100%;height:23px;font-size:16px;font-family:微软雅黑 黑体 Hei;color:#495d80;padding-top:7px;font-weight:bold;text-align:center;background-image:url(../media/images/devices.jpg)">{{devicelist}}</div>
 			<div id="div_spot_list" style="height:576px;overflow-x:hidden;overflow-y:auto;">
 			  {% for spot in spot_list|dictsortreversed:"online" %}
-			  	{% ifequal spot.online "1" %}
-				<div class="spot_button" onclick="play_video('{{ spot.name }}','sip:{{spot.id}}@{{host}}:{{gateway.port}}')" onmouseover="button_spot_over(this)" onmouseout="button_spot_out(this)" onmousedown="this.style.color='red'" onmouseup="this.style.color='white'">
+			  	{% ifequal spot.online "0" %}
+				<div class="spot_disabled">
 				<div style="float:left;width:30px;position:relative"><img width="16" height="16" id="online_{{spot.id}}" src="/media/images/s{{spot.online}}.png" style="vertical-align:-2px"/></div>   
 				<div style="float:left">{{ spot.name }}</div>
 				</div>
 				{% else %}
-				<div class="spot_disabled">
+				<div class="spot_button" onclick="play_video('{{ spot.name }}','sip:{{spot.id}}@{{host}}:{{gateway.port}}')" onmouseover="button_spot_over(this)" onmouseout="button_spot_out(this)" onmousedown="this.style.color='red'" onmouseup="this.style.color='white'">
 				<div style="float:left;width:30px;position:relative"><img width="16" height="16" id="online_{{spot.id}}" src="/media/images/s{{spot.online}}.png" style="vertical-align:-2px"/></div>   
 				<div style="float:left">{{ spot.name }}</div>
 				</div>

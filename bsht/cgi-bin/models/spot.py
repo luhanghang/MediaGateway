@@ -59,12 +59,15 @@ class Spot(object):
 	state = open('/tmp/gateway.state')
 	states = state.read().split('\n')
 	state.close()
+	pending = open('/tmp/online')
+	pendings = pending.read().split('\n')
+	pending.close()
 	for tag in module.getchildren():
 		spot_attrs = tag.getchildren()
 		spot = { 'name':spot_attrs[0].text, 'global_id':spot_attrs[4].text,'video_in':spot_attrs[2].text }
 		spot['id'] = re.search('(?<=sip:).*?(?=@)',spot['global_id']).group() 
 		spot['global_id'] = 'sip:' + spot['id'] + '@' + self.gw.get_info()['host'] + ':' + self.gw.get_info()['port']
-		spot['online'] = str((spot['id'] + '=1' in states) + 0)
+		spot['online'] = str((spot['id'] + '=1' in states) + (spot['id'] + '=1' in pendings) + 0)
 		spot_list.append(spot)
 	return spot_list
 
