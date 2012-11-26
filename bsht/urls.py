@@ -109,5 +109,8 @@ urlpatterns = patterns('bsht.cgi-bin',
         (r'^record_schedule/dailies$','record_schedule.dailies'),
         (r'^record_schedule/record_files$','record_schedule.record_files'),
         (r'^log$','log.view'),
+        (r'^callback/read$','callback.read'),
+        (r'^callback/write$','callback.write'),
+        (r'^gis/get$','gis.get'),
         (r'^crossdomain.xml$','admin.crossdomain')
 )

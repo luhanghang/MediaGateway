@@ -67,7 +67,7 @@ class Spot(object):
 		spot = { 'name':spot_attrs[0].text, 'global_id':spot_attrs[4].text,'video_in':spot_attrs[2].text }
 		spot['id'] = re.search('(?<=sip:).*?(?=@)',spot['global_id']).group() 
 		spot['global_id'] = 'sip:' + spot['id'] + '@' + self.gw.get_info()['host'] + ':' + self.gw.get_info()['port']
-		spot['online'] = str((spot['id'] + '=1' in states) + (spot['id'] + '=1' in pendings) + 0)
+		spot['online'] = str(((spot['id'] + '=1' in states) or (spot['id'] + '=1' in pendings)) + 0)
 		spot_list.append(spot)
 	return spot_list
 
@@ -92,7 +92,16 @@ class Spot(object):
 				spot['gis'] = gisinf
 				spot_list.append(spot)
 	return spot_list
-	
+
+  def getGis(self,id):
+	gis = open('/tmp/gis')
+	gis_array = gis.read().split('\n')
+	gis.close()
+	for gisinf in gis_array: 
+		if gisinf.startswith(id + '='):
+			return gisinf
+	return ""
+		
 #  def xml_list(self):
 	#module = self.gw_node.xpath("MODULE")[0]
 	#spots = etree.Element('Spots')

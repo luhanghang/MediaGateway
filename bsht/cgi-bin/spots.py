@@ -23,9 +23,15 @@ def states(request):
 		state = open('/tmp/gateway.state')                                                              
 		states = state.read().split('\n')                     
 		state.close()
+		pending = open('/tmp/online')
+		pendings = pending.read().split('\n')
+		pending.close()
 		for s in states:
 			if s.find('=1') >= 0:
 				out += s.split('=')[0] + ','
+		for s in pendings:
+			if s.find('=1') >= 0:
+				out += s.split('=')[0] + ','		
 	return HttpResponse(out)
 
 def all(request):
