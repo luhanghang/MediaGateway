@@ -43,12 +43,16 @@ def index(request):
 		str_down = lan.find("down_plugin").get("string");
 		str_confirmexit = lan.find("confirm_exit").get("string");
 		str_mapview = lan.find("mapview").get("string");
-		return render_to_response('monitor.html', {'lan':lanIdx,'spot_list':spot.short_list1(), 'gateway':spot.get_gateway().get_info(), 'host':request.get_host().split(':')[0], 'monitor':str_monitor, 'single':str_single,'split':str_split,'screen':str_screen, 'screens':str_screens, 'exit':str_exit, 'devicelist':str_devicelist,'fullscreen':str_fullscreen, 'down':str_down, 'mapview':str_mapview,'confirm_exit':str_confirmexit}) 
+		return render_to_response('monitor.html', {'lan':lanIdx,'spot_list':spot.short_list(), 'gateway':spot.get_gateway().get_info(), 'host':request.get_host().split(':')[0], 'monitor':str_monitor, 'single':str_single,'split':str_split,'screen':str_screen, 'screens':str_screens, 'exit':str_exit, 'devicelist':str_devicelist,'fullscreen':str_fullscreen, 'down':str_down, 'mapview':str_mapview,'confirm_exit':str_confirmexit}) 
 
 def spots(request):
 	spot = Spot()
 	return render_to_response('spots.html', {'spot_list':spot.short_list(), 'gateway':spot.get_gateway().get_info(), 'host':request.get_host().split(':')[0]})
 	
+def get_onlines(request):
+	spot = Spot()
+	return HttpResponse(spot.get_onlines())	
+
 def spots1(request):
 	spot = Spot()
 	return HttpResponse(json.dumps(spot.short_list1(), ensure_ascii=False))	

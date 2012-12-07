@@ -71,24 +71,39 @@ class Spot(object):
 		spot_list.append(spot)
 	return spot_list
 
-  def short_list1(self):
-	module = self.gw_node.xpath("MODULE[@id='1']")[0]
+  def get_onlines(self):
 	spot_list = []
 	state = open('/tmp/gateway.state')
 	states = state.read().split('\n')
 	state.close()
+	pending = open('/tmp/online')
+	pendings = pending.read().split('\n')
+	pending.close()
+	
+	for s in states:
+		s = s.split('=')
+		if len(s) == 2 and s[1] == '1':
+			spot_list.append(s[0])
+	for s in pendings:
+		s = s.split('=')
+		if len(s) == 2 and s[1] == '1' and s[0] not in spot_list:
+			spot_list.append(s[0])
+	return ','.join(spot_list)
+	
+  def short_list1(self):
+	module = self.gw_node.xpath("MODULE[@id='1']")[0]
+	spot_list = []
 	gis = open('/tmp/gis')
 	gis_array = gis.read().split('\n')
 	gis.close()
 	for tag in module.getchildren():
 		spot_attrs = tag.getchildren()
 		spot = { 'name':spot_attrs[0].text.encode('utf-8'), 'global_id':spot_attrs[4].text }
-		spot['id'] = re.search('(?<=sip:).*?(?=@)',spot['global_id']).group() 
+		#spot['id'] = re.search('(?<=sip:).*?(?=@)',spot['global_id']).group() 
 		spot['global_id'] = 'sip:' + spot['id'] + '@' + self.gw.get_info()['host'] + ':' + self.gw.get_info()['port']
-		spot['online'] = str((spot['id'] + '=1' in states) + 0)
 		spot['gis'] = 0
 		for gisinf in gis_array: 
-			if gisinf.startswith(spot['id'] + '=') and spot['online'] == "1":
+			if gisinf.startswith(spot['id'] + '='):
 				spot['gis'] = gisinf
 				spot_list.append(spot)
 	return spot_list

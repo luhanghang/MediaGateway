@@ -61,12 +61,44 @@ function init() {
 	var opts = {anchor: BMAP_ANCHOR_TOP_RIGHT};
 	map.addControl(new BMap.NavigationControl(opts)); 
 	get_gis_inf();
-	setInterval('get_gis_inf()',10000);
+	setInterval('get_gis_inf()',1000);
 }
 
 function refresh_list() {
-	$.post('/monitor/spots',{}, function(result) {
-		document.getElementById("div_spot_list").innerHTML = result;
+	$.post('/monitor/get_onlines',{}, function(result) {
+		//document.getElementById("div_spot_list").innerHTML = result;
+		var lights = $(".online");
+		if(result == '') {
+			result = new Array();
+		} else {
+			result = result.split(",");
+		}
+		for(var i = 0;i < lights.length; i++) {
+			var id = lights[i].id;
+			id = id.split('_')[1];
+			if(jQuery.inArray(id,result) == -1) {
+				lights[i].src = "/media/images/s0.png";
+				lights[i].className = "offiline";
+				var sp = document.getElementById("button_" + id);
+				sp.className = "spot_disabled";
+			}
+		}
+		
+		for(var i = 0; i < result.length; i++) {
+			var id = result[i];
+			var sp = document.getElementById("button_" + id);
+			if(sp.className == "spot_disabled") {
+				var light = document.getElementById("light_" + id);
+				light.src = "/media/images/s1.png";
+				light.className = "online";
+				if($(".spot_button").length > 0) {
+					$(".spot_button:first").before(sp);	
+				} else {
+					$(".spot_disabled:first").before(sp);
+				}
+				sp.className = "spot_button";
+			}
+		}
 		correctPNG();
 	});
 }

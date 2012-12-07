@@ -17,23 +17,6 @@ def list(request):
   xml = spot.xml_list()
   return HttpResponse(etree.tostring(xml, encoding='UTF-8', xml_declaration=True, pretty_print=True),mimetype='text/xml')
 
-def states(request):
-	out = ''
-	if os.path.exists('/tmp/gateway.state'):                                                                        
-		state = open('/tmp/gateway.state')                                                              
-		states = state.read().split('\n')                     
-		state.close()
-		pending = open('/tmp/online')
-		pendings = pending.read().split('\n')
-		pending.close()
-		for s in states:
-			if s.find('=1') >= 0:
-				out += s.split('=')[0] + ','
-		for s in pendings:
-			if s.find('=1') >= 0:
-				out += s.split('=')[0] + ','		
-	return HttpResponse(out)
-
 def all(request):
   ip = request.META['HTTP_HOST']
   spot = Spot()
